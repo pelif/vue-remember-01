@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3 001</title>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+        crossorigin="anonymous">   
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <div id="app" >        
+        <div :style="styles" id="app-content">
+            <nav-bar 
+                @toggle-theme="toggleTheme" 
+                :total-items-cart="cart.length"
+                @show-products-cart="showProductsCart">
+            </nav-bar>            
+
+            <h2>{{ title }}</h2>
+
+            <product-details 
+                v-show="!showCart"                
+                :products="products"   
+                :cart="cart"                              
+                @add-prod-cart="addCart">
+            </product-details>    
+            
+            <view-cart 
+                v-show="showCart"
+                :cart="cart"
+                @remove-item-cart="removeCart">                
+            </view-cart>
+
+        </div>
+        
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js"></script>    
+    <script src="./components/NavBar.js"></script>    
+    <script src="./components/ProductDetails.js"></script>    
+    <script src="./components/ViewCart.js"></script>    
+
+    <script>
+        app.mount("#app")
+    </script>
+    
+</body>
+</html>
