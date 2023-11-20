@@ -21,7 +21,7 @@ jobs:
     steps: 
       - uses: actions/checKout@v4        
       - name: Deploy To Server  
-        uses: easingthemes/ssh-deploy@v4
+        uses: easingthemes/ssh-deploy@v3
         env: 
           ARGS: "-rltgoDzvO -i"
           SSH_PRIVATE_KEY: ${{secrets.SSH_KEY_PEM}}
