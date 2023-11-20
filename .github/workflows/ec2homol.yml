@@ -5,12 +5,26 @@ on:
     branches: [ main ]
 
 jobs: 
-  Deploy: 
+  TestDeploy: 
     name: Deploy to EC2
     runs-on: ubuntu-latest
 
     steps: 
       - uses: actions/checkout@v2
-      - name: Build & Deploy
+      - name: Testing of Deploy
         run: echo "Buildings and Deploying Application"
     
+  Deploy-Ec2: 
+    name: CD to EC2
+    needs: TestDeploy
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checKout@v2        
+      - name: Deploy To Server  
+        env: 
+          SSH_HOST: ${{secrets.SSH_HOST}}
+          PRIVATE_KEY: ${{secrets.SSH_KEY_PEM}}
+          SSH_USER: ${{secrets.SSH_USER}}
+        run: | 
+          echo "$PRIVATE_KEY" > private_key && chmod 400 private_key 
+          ssh -o StrictHostKeyChecking=no -i private_key ${SSH_USER}@${SSH_HOST}  
