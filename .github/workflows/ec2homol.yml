@@ -21,11 +21,11 @@ jobs:
     steps: 
       - uses: actions/checKout@v4        
       - name: Deploy To Server  
-        uses: easingthemes/ssh-deploy@v3
-        with: 
-          ARGS: "-rltgoDzvO -i"
-          ssh-private-key: ${{secrets.SSH_KEY_PEM}}
-          remote-host: ${{secrets.SSH_HOST}}          
-          remote-user: ${{secrets.SSH_USER}}
-          target: /var/www/html/vue-remember-01
+        uses: appleboy/ssh-action@master
+        with:           
+          key: ${{secrets.SSH_KEY_PEM}}
+          host: ${{secrets.SSH_HOST}}          
+          username: ${{secrets.SSH_USER}}
+          scripts: | 
+            echo "Hello World!!!"
         
