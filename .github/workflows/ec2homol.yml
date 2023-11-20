@@ -24,8 +24,8 @@ jobs:
         uses: easingthemes/ssh-deploy@v4
         env: 
           ARGS: "-rltgoDzvO -i"
-          SSH_HOST: ${{secrets.SSH_HOST}}
-          PRIVATE_KEY: ${{secrets.SSH_KEY_PEM}}
-          SSH_USER: ${{secrets.SSH_USER}}
+          SSH_PRIVATE_KEY: ${{secrets.SSH_KEY_PEM}}
+          REMOTE_HOST: ${{secrets.SSH_HOST}}          
+          REMOTE_USER: ${{secrets.SSH_USER}}
           TARGET: /var/www/html/vue-remember-01
         
