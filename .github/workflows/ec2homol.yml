@@ -9,4 +9,4 @@ jobs:
     name: Deploy to EC2
     runs-on: ubuntu-latest
     name: Showing current step
-    run: echo 'Fazendo o Deploy'
+    script: echo 'Preparando o Deploy para Máquina EC2'
