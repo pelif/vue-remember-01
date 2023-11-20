@@ -21,7 +21,7 @@ jobs:
     steps: 
       - uses: actions/checKout@v4        
       - name: Deploy To Server  
-        uses: easingthemes/ssh-deploy@v2.2.11
+        uses: easingthemes/ssh-deploy@v4
         env: 
           ARGS: "-rltgoDzvO -i"
           SSH_HOST: ${{secrets.SSH_HOST}}
