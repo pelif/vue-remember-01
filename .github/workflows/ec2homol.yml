@@ -22,10 +22,10 @@ jobs:
       - uses: actions/checKout@v4        
       - name: Deploy To Server  
         uses: easingthemes/ssh-deploy@v3
-        env: 
+        with: 
           ARGS: "-rltgoDzvO -i"
-          SSH_PRIVATE_KEY: ${{secrets.SSH_KEY_PEM}}
-          REMOTE_HOST: ${{secrets.SSH_HOST}}          
-          REMOTE_USER: ${{secrets.SSH_USER}}
-          TARGET: /var/www/html/vue-remember-01
+          ssh-private-key: ${{secrets.SSH_KEY_PEM}}
+          remote-host: ${{secrets.SSH_HOST}}          
+          remote-user: ${{secrets.SSH_USER}}
+          target: /var/www/html/vue-remember-01
         
